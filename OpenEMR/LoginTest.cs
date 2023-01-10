@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Bibliography;
 using NUnit.Framework;
 using OpenEMR.Base;
+using OpenEMR.Pages;
 using OpenEMR.Utilities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -17,8 +18,10 @@ namespace OpenEMR
         [Test,TestCaseSource(typeof(DataSource),nameof(DataSource.ValidLoginTest))]
         public void ValidLoginTest(string username,string password)
         {
-            driver.FindElement(By.Id("authUser")).SendKeys(username);
-            driver.FindElement(By.Id("clearPass")).SendKeys(password);
+            LoginPage loginpage = new LoginPage(driver);
+            loginpage.EnterUserName(username);
+            loginpage.EnterPassword(password);
+            
             SelectElement select = new SelectElement(driver.FindElement(By.XPath("//select[@class='form-control']")));
             select.SelectByText("English (Indian)");
             driver.FindElement(By.Id("login-button")).Click();
