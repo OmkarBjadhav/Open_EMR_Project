@@ -21,10 +21,9 @@ namespace OpenEMR
             LoginPage loginpage = new LoginPage(driver);
             loginpage.EnterUserName(username);
             loginpage.EnterPassword(password);
-            
-            SelectElement select = new SelectElement(driver.FindElement(By.XPath("//select[@class='form-control']")));
-            select.SelectByText("English (Indian)");
-            driver.FindElement(By.Id("login-button")).Click();
+            loginpage.SelectLanguageFromDropdown();
+            loginpage.ClickOnLogin();
+           
 
             string pageUrl = driver.Url;
 
@@ -37,10 +36,11 @@ namespace OpenEMR
 
         public void InvalidLoginTest(string username, string password, string expectedMsg)
         {
-            driver.FindElement(By.Id("authUser")).SendKeys(username);
-            driver.FindElement(By.Id("clearPass")).SendKeys(password);
-            driver.FindElement(By.Id("login-button")).Click();
-            string errorMsg = driver.FindElement(By.XPath("//div[contains(text(),'Invalid')]")).Text;
+            LoginPage loginpage = new LoginPage(driver);
+            loginpage.EnterUserName(username);
+            loginpage.EnterPassword(password);
+            loginpage.ClickOnLogin();
+            string errorMsg = loginpage.GetInvalidErrorMessage();
             Assert.That(errorMsg.Contains(expectedMsg));
 
             // Print The Error MSG
