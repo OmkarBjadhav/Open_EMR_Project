@@ -10,30 +10,30 @@ using System.Threading.Tasks;
 
 namespace OpenEMR.Pages
 {
-    public  class LoginPage
+    public class LoginPage
     {
         private By _usernameLoc = By.Id("authUser");
         private By _passwordLoc = By.Id("clearPass");
         private By _loginLoc = By.Id("login-button");
         private By _dropDownLoc = By.XPath("//select[@class='form-control']");
         private By _errorMsgLoc = By.XPath("//div[contains(text(),'Invalid')]");
-       
+
 
         private IWebDriver driver;
-        public LoginPage(IWebDriver driver ) 
+        public LoginPage(IWebDriver driver)
         {
-          this.driver= driver;
-        
+            this.driver = driver;
+
         }
 
-        public void EnterUserName(string username )
+        public void EnterUserName(string username)
         {
             driver.FindElement(_usernameLoc).SendKeys(username);
 
         }
-        public void EnterPassword(string password ) 
+        public void EnterPassword(string password)
         {
-          driver.FindElement(_passwordLoc).SendKeys(password);
+            driver.FindElement(_passwordLoc).SendKeys(password);
         }
 
         public void SelectLanguageFromDropdown()
@@ -51,9 +51,9 @@ namespace OpenEMR.Pages
 
 
         public string GetInvalidErrorMessage()
-        { 
-          return driver.FindElement(_errorMsgLoc).Text;
-        
+        {
+            return driver.FindElement(_errorMsgLoc).Text;
+
         }
 
 

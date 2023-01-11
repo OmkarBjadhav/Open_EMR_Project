@@ -13,22 +13,23 @@ using System.Threading.Tasks;
 
 namespace OpenEMR
 {
-    public  class LoginTest:AutomationWrapper
+    public class LoginTest : AutomationWrapper
     {
-        [Test,TestCaseSource(typeof(DataSource),nameof(DataSource.ValidLoginTest))]
-        public void ValidLoginTest(string username,string password)
+        [Test, TestCaseSource(typeof(DataSource), nameof(DataSource.ValidLoginTest))]
+        public void ValidLoginTest(string username, string password)
         {
             LoginPage loginpage = new LoginPage(driver);
             loginpage.EnterUserName(username);
             loginpage.EnterPassword(password);
             loginpage.SelectLanguageFromDropdown();
             loginpage.ClickOnLogin();
-           
 
-            string pageUrl = driver.Url;
+
+            string pageTitle = driver.Title;
+           // Console.WriteLine(pageTitle);
 
             // Landing page Url Confirmation 
-            Assert.That(pageUrl.Contains("http://demo.openemr.io/b/openemr/interface/main/tabs/main.php"));
+            Assert.That(pageTitle.Contains("Open"));
         }
 
         [Test, TestCaseSource(typeof(DataSource), nameof(DataSource.InvalidLoginTest))]

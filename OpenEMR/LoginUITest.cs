@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenEMR.Base;
+using OpenEMR.Pages;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,9 @@ namespace OpenEMR
         [Test]
         public void ValidatePlaceHolderTest()
         {
-            string actualUsernamePlaceHolder = driver.FindElement(By.Id("authUser")).GetAttribute("placeholder");
-            string actualPasswordPlaceHolder = driver.FindElement(By.Id("clearPass")).GetAttribute("placeholder");
+            LoginPage loginPage = new LoginPage(driver);
+            string actualUsernamePlaceHolder = loginPage.GetUserNamePlaceholder();
+            string actualPasswordPlaceHolder = loginPage.GetPasswordPlaceholder();
             Assert.That(actualPasswordPlaceHolder, Is.EqualTo("Password"));
             Assert.That(actualUsernamePlaceHolder, Is.EqualTo("Username"));
         }

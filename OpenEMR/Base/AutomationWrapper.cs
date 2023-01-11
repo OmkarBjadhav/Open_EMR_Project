@@ -16,12 +16,14 @@ namespace OpenEMR.Base
 
         protected IWebDriver driver;
 
-        [SetUp]
+
+
         // This Method will run before the [Test]Method
+        [SetUp]
         public void beforeMethod()
         {
 
-            string browserValue = "firefox";
+            string browserValue = "edge";
             if (browserValue.ToLower().Equals("edge"))
             {
                 driver = new EdgeDriver();
@@ -41,7 +43,7 @@ namespace OpenEMR.Base
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
 
-            driver.Url = "http://demo.openemr.io/b/openemr/";
+            driver.Url = "https://demo.openemr.io/openemr/interface/login/login.php?site=default";
 
         }
 

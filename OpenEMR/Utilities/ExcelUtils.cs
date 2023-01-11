@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenEMR.Utilities
 {
-    public  class ExcelUtils
+    public class ExcelUtils
     {
         public static object[] GetSheetIntoObjectArray(string file, string sheetname)
         {

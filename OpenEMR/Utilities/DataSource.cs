@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenEMR.Utilities
 {
-    public  class DataSource
+    public class DataSource
     {
 
         public static object[] ValidLoginTest()
@@ -14,7 +14,7 @@ namespace OpenEMR.Utilities
             string[] dataset1 = new string[2];
             dataset1[0] = "admin";
             dataset1[1] = "pass";
-         
+
             object[] allData = new object[1];
             allData[0] = dataset1;
             return allData;
@@ -37,7 +37,7 @@ namespace OpenEMR.Utilities
             dataset2[1] = "pass123";
             dataset2[2] = "Invalid username ";
 
-            object[] allData= new object[2];
+            object[] allData = new object[2];
             allData[0] = dataset1;
             allData[1] = dataset2;
             return allData;
@@ -81,9 +81,17 @@ namespace OpenEMR.Utilities
 
         public static object[] ValidPatientData1()
         {
-            object[] data = ExcelUtils.GetSheetIntoObjectArray(@"C:\\Users\\omkarj\\Desktop\\C# Project\\AutomationProject1\\OpenEMR\\TestData\\openemr_data.xlsx", "AddValidPatientTest");
+            object[] data = ExcelUtils.GetSheetIntoObjectArray(@"C:\Users\omkarj\Desktop\C# Project\AutomationProject1\OpenEMR\TestData\openemr_data.xlsx", "AddValidPatientTest");
 
             return data;
+
+        }
+
+        public static object[] AddValidPatientData()
+        {
+            object[] data = ExcelUtils.GetSheetIntoObjectArray(@"C:\\Users\\omkarj\\Desktop\\C# Project\\AutomationProject1\\OpenEMR\\TestData\\openemr_data.xlsx", "AddValidPatientTest");
+            return data;
+
 
         }
     }
