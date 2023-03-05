@@ -20,7 +20,8 @@ namespace OpenEMR
         public void AddNewPatient(string username, string password, string suffix, string firstname, string middlename, string lastname, string dob, string gender, string maritalstatus)
 
         {
-            LoginPage loginPage = new LoginPage(driver);
+            // I made new changes in my code 
+            LoginPage loginPage = new LoginPage(driver abc);
             loginPage.EnterUserName(username);
             loginPage.EnterPassword(password);
             loginPage.SelectLanguageFromDropdown();
