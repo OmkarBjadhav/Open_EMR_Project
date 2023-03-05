@@ -23,7 +23,7 @@ namespace OpenEMR.Base
         public void beforeMethod()
         {
 
-            string browserValue = "edge";
+            string browserValue = "firefox";
             if (browserValue.ToLower().Equals("edge"))
             {
                 driver = new EdgeDriver();

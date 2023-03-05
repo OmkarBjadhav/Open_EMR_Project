@@ -50,7 +50,8 @@ namespace OpenEMR
             driver.FindElement(By.Id("create")).Click();
             driver.SwitchTo().DefaultContent();
             driver.SwitchTo().Frame(driver.FindElement(By.XPath("//iframe[@id='modalframe']")));
-            driver.FindElement(By.XPath("//input[@value='Confirm Create New Patient']")).Click();
+            // driver.FindElement(By.XPath("//input[@value='Confirm Create New Patient']")).Click();
+            mainpage.ClickOnCreateNewPatient();
             Thread.Sleep(3000);
 
              driver.SwitchTo().Alert().Accept();

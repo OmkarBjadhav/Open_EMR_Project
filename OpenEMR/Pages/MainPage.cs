@@ -19,6 +19,7 @@ namespace OpenEMR.Pages
         private By _dateofbirthloc = By.Id("form_DOB");
         private By _selctgenderloc = By.Id("form_sex");
         private By _selectmaritalstatusloc = By.Id("form_status");
+        private By _createnewpatientloc = By.XPath("//input[@value='Confirm Create New Patient']");
 
 
         private IWebDriver driver;
@@ -73,6 +74,13 @@ namespace OpenEMR.Pages
         {
             SelectElement select1 = new SelectElement(driver.FindElement(_selectmaritalstatusloc));
             select1.SelectByText(maritalstatus);
+
+        }
+
+        public void ClickOnCreateNewPatient()
+        {
+            driver.FindElement(_clickonaddnewpatient).Click();
+
 
         }
     }
